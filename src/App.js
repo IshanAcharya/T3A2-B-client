@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import LoginRegister from './components/LoginRegister';
+import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
+import TypingPractice from './components/TypingPractice';
+import FreeTyping from './components/FreeTyping';
+import ViewSessions from './components/ViewSessions';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/login-register" component={LoginRegister}/>
+        <Route path="/dashboard" component={Dashboard}/>
+        <Route path="/profile" component={Profile}/>
+        <Route path="/typing-practice" component={TypingPractice}/>
+        <Route path="/free-typing" component={FreeTyping}/>
+        <Route path="/view-sessions" component={ViewSessions}/>
+      </Switch>
+    </Router>
   );
 }
 
