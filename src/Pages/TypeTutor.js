@@ -96,7 +96,36 @@ const processCurrentText = (typedText) => {
         setTypedText('');
     }
 };
- 
+
+// Function to update timer during type tutor session
+const updateTimer = () => {
+    setTimeLeft((prevTimeLeft) => prevTimeLeft -1);
+    setTimeElapsed((prevTimeElapsed) => prevTimeElapsed +1);
+};
+
+// Function to start type tutor typing session
+const startGame = () => {
+    resetValues();
+    setTimer(setInterval(updateTimer, 1000));
+    inputAreaRef.current.disabled = false;
+    inputAreaRef.current.focus();
+};
+
+// Function to finish type tutor typing session
+const finishGame = () => {
+    clearInterval(timer);
+    setTimer(null);
+
+    // Calculate user's final CPM and WPM
+    const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
+    const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
+
+    setCpm(finalCpm);
+    setWpm(finalWpm);
+};
+
+
+
 
 
 
