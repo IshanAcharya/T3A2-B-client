@@ -54,145 +54,130 @@ const TypeTutor = () => {
     const [wpm, setWpm] = useState(0);
     const inputAreaRef = useRef(null);
 
-// Add effect to update quote to respective difficulty assigned when user changes difficulty
-useEffect(() => {
-    updateQuote();
-}, [difficulty]);
-
-// Add effect to finish the typetutor game session once the timer runs out
-useEffect(() => {
-    if (timeLeft === 0) {
-        finishGame();
-    }
-}, [timeLeft]);
-
-// Function to update the quote for difficulty based on random quote from each difficulty
-const updateQuote = () => {
-    const quotes = quotesArray[difficulty];
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    setCurrentQuote(quotes[randomIndex]);
-};
-
-// Function to process text input by user during session
-const processCurrentText = (typedText) => {
-    const quoteSpanArray = currentQuote.split('');
-    let newErrors = 0;
-
-    // Calculate number of errors made by user during session
-    quoteSpanArray.forEach((char, index) => {
-        const typedChar = typedText[index];
-        if (typedChar !== char) {
-            newErrors++;
-        }
-    });
-
-    setErrors(newErrors);
-    setCharacterTyped(typedText.length);
-
-    // Calculate accuracy of user input during session
-    const correctCharacters = characterTyped - (totalErrors + newErrors);
-    const accuracyVal = (correctCharacters / characterTyped) * 100;
-    setAccuracy(Math.round(accuracyVal));
-
-    // Reset text to update quote if user input exceeds quote length 
-    if (typedText.length === currentQuote.length) {
+    // Add effect to update quote to respective difficulty assigned when user changes difficulty
+    useEffect(() => {
         updateQuote();
-        setTotalErrors(totalErrors + newErrors);
-        setTypedText('');
-    }
-};
+    }, [difficulty]);
 
-// Function to update timer during type tutor session
-const updateTimer = () => {
-    setTimeLeft((prevTimeLeft) => prevTimeLeft -1);
-    setTimeElapsed((prevTimeElapsed) => prevTimeElapsed +1);
-};
+    // Add effect to finish the typetutor game session once the timer runs out
+    useEffect(() => {
+        if (timeLeft === 0) {
+            finishGame();
+        }
+    }, [timeLeft]);
 
-// Function to start type tutor typing session
-const startGame = () => {
-    resetValues();
-    setTimer(setInterval(updateTimer, 1000));
-    inputAreaRef.current.disabled = false;
-    inputAreaRef.current.focus();
-};
+    // Function to update the quote for difficulty based on random quote from each difficulty
+    const updateQuote = () => {
+        const quotes = quotesArray[difficulty];
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        setCurrentQuote(quotes[randomIndex]);
+    };
 
-// Function to finish type tutor typing session
-const finishGame = () => {
-    clearInterval(timer);
-    setTimer(null);
+    // Function to process text input by user during session
+    const processCurrentText = (typedText) => {
+        const quoteSpanArray = currentQuote.split('');
+        let newErrors = 0;
 
-    // Calculate user's final CPM and WPM
-    const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
-    const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
+        // Calculate number of errors made by user during session
+        quoteSpanArray.forEach((char, index) => {
+            const typedChar = typedText[index];
+            if (typedChar !== char) {
+                newErrors++;
+            }
+        });
 
-    setCpm(finalCpm);
-    setWpm(finalWpm);
-};
+        setErrors(newErrors);
+        setCharacterTyped(typedText.length);
 
-// Function to reset typing session game values
-const resetValues = () => {
-    setTimeLeft(time_limit);
-    setTimeElapsed(0);
-    setErrors(0);
-    setTotalErrors(0);
-    setAccuracy(100);
-    setCharacterTyped(0);
-    setCpm(0);
-    setWpm(0);
-    inputAreaRef.current.value = '';
-    inputAreaRef.current.disabled = true;
-};
+        // Calculate accuracy of user input during session
+        const correctCharacters = characterTyped - (totalErrors + newErrors);
+        const accuracyVal = (correctCharacters / characterTyped) * 100;
+        setAccuracy(Math.round(accuracyVal));
 
-// Render typing session game interface
-return (
-    <div className="type-tutor">
-        <div className="header">
-            <h1>Type Tutor</h1>
-            <div className="difficulty-selector">
-                <label htmlFor="difficulty">Select Difficulty:</label>
-                <select
-                    id="difficulty"
-                    value={difficulty}
-                    onChange={(e) => setDifficulty(e.target.value)}
-                >
-                    <option value="Beginner">Beginner</option>
-                    <option value="Easy">Easy</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hard">Hard</option>
-                    <option value="Expert">Expert</option>
-                </select>
+        // Reset text to update quote if user input exceeds quote length 
+        if (typedText.length === currentQuote.length) {
+            updateQuote();
+            setTotalErrors(totalErrors + newErrors);
+            setTypedText('');
+        }
+    };
+
+    // Function to update timer during type tutor session
+    const updateTimer = () => {
+        setTimeLeft((prevTimeLeft) => prevTimeLeft -1);
+        setTimeElapsed((prevTimeElapsed) => prevTimeElapsed +1);
+    };
+
+    // Function to start type tutor typing session
+    const startGame = () => {
+        resetValues();
+        setTimer(setInterval(updateTimer, 1000));
+        inputAreaRef.current.disabled = false;
+        inputAreaRef.current.focus();
+    };
+
+    // Function to finish type tutor typing session
+    const finishGame = () => {
+        clearInterval(timer);
+        setTimer(null);
+
+        // Calculate user's final CPM and WPM
+        const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
+        const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
+
+        setCpm(finalCpm);
+        setWpm(finalWpm);
+    };
+
+    // Function to reset typing session game values
+    const resetValues = () => {
+        setTimeLeft(time_limit);
+        setTimeElapsed(0);
+        setErrors(0);
+        setTotalErrors(0);
+        setAccuracy(100);
+        setCharacterTyped(0);
+        setCpm(0);
+        setWpm(0);
+        inputAreaRef.current.value = '';
+        inputAreaRef.current.disabled = true;
+    };
+
+    // Render typing session game interface
+    return (
+        <div className="type-tutor">
+            <Header />
+                <div className="difficulty-selector">
+                    <label htmlFor="difficulty">Select Difficulty:</label>
+                    <select
+                        id="difficulty"
+                        value={difficulty}
+                        onChange={(e) => setDifficulty(e.target.value)}
+                    >
+                        <option value="Beginner">Beginner</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                </div>
+                <GameStats
+                    timeLeft={timeLeft}
+                    totalErrors={totalErrors}
+                    errors={errors}
+                    accuracy={accuracy}
+                    cpm={cpm}
+                    wpm={wpm}
+                />
+                <TypingArea
+                    quote={currentQuote}
+                    typedText={typedText}
+                    onTyping={processCurrentText}
+                    inputRef={inputAreaRef}
+                />
+                <RestartButton onRestart={resetValues} />
             </div>
-        </div>
-        <div className="stats">
-            <p className="timer">Time Left: <span className="curr_time">{timeLeft}s</span></p>
-            <p className="accuracy">Accuracy: <span className="curr_accuracy">{accuracy}%</span></p>
-            <p className="errors">Errors: <span className="curr_errors">{totalErrors + errors}</span></p>
-            <p className="cpm">CPM: <span className="curr_cpm">{cpm}</span></p>
-            <p className="wpm">WPM: <span className="curr_wpm">{wpm}</span></p>
-        </div>
-        <div className="quote">
-            {currentQuote.split('').map((char, index) => (
-                <span key={index} className={`char ${typedText[index] === char ? 'correct_char' : typedText[index] ? 'incorrect_char' : ''}`}>
-                    {char}
-                </span>
-            ))}
-        </div>
-        <textarea
-            ref={inputAreaRef}
-            className="input_area"
-            value={typedText}
-            onChange={(e) => {
-                setTypedText(e.target.value);
-                processCurrentText(e.target.value);
-            }}
-            disabled
-            placeholder="To start, please start typing here..."
-        />
-        <button className="restart_button" onClick={startGame}>
-            {timer ? "Restart" : "Start"}
-        </button>
-    </div>
-    );
+        );
 };
 
 export default TypeTutor;

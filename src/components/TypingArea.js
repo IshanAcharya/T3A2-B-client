@@ -16,7 +16,7 @@ const TypingArea = ({ quote, typedText, onTyping, inputRef }) => {
         className="input_area"
         value={typedText}
         onChange={(e) => onTyping(e.target.value)}
-        placeholder="Start typing here..."
+        placeholder="To begin, start typing here..."
       />
     </div>
   );
