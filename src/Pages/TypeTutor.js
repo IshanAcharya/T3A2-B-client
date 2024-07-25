@@ -124,6 +124,21 @@ const finishGame = () => {
     setWpm(finalWpm);
 };
 
+// Function to reset typing session game values
+const resetValues = () => {
+    setTimeLeft(time_limit);
+    setTimeElapsed(0);
+    setErrors(0);
+    setTotalErrors(0);
+    setAccuracy(100);
+    setCharactersTyped(0);
+    setCpm(0);
+    setWpm(0);
+    inputAreaRef.current.value = '';
+    inputAreaRef.current.disabled = true;
+};
+
+
 
 
 
