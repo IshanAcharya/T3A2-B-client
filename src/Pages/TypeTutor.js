@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useRef} from 'react';
+import Header from '../components/Header';
+import GameStats from '../components/GameStats';
+import RestartButton from '../components/RestartButton';
+import TypingArea from '../components/TypingArea';
 import '../styles/TypeTutor.css';
 
 // Define time limit for the type tutor session
