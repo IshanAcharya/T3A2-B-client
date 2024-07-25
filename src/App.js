@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import LoginRegister from './pages/LoginRegister';
 import Profile from './components/Profile';
 import TypeTutor from './pages/TypeTutor';
-import ViewSessions from './pages/ViewSessions';
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/login-register" component={LoginRegister} />
         <Route path="/profile" component={Profile} />
-        <Route path="/view-sessions" component={ViewSessions} />
         <Route path="/type-tutor" component={TypeTutor} />
       </Switch>
     </Router>
