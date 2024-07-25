@@ -1,0 +1,25 @@
+.home {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom right, white, #2E8FE9);
+    min-height: 100vh
+}
+
+.home-content {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.home-buttons .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #2E8FE9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.home-buttons .button:hover {
+    background-color: #0056b3;
+}
