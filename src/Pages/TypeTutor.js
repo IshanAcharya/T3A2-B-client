@@ -43,6 +43,7 @@ const TypeTutor = () => {
     const [errors, setErrors] = useState(0);
     const [accuracy, setAccuracy] = useState(100);
     const [characterTyped, setCharacterTyped] = useState(0);
+    const [typedText, setTypedText] = useState('');
     const [currentQuote, setCurrentQuote] = useState('');
     const [timer, setTimer] = useState(null);
     const [cpm, setCpm] = useState(0);
@@ -82,7 +83,7 @@ const processCurrentText = (typedText) => {
     });
 
     setErrors(newErrors);
-    setCharactersTyped(typedText.length);
+    setCharacterTyped(typedText.length);
 
     // Calculate accuracy of user input during session
     const correctCharacters = characterTyped - (totalErrors + newErrors);
@@ -131,46 +132,63 @@ const resetValues = () => {
     setErrors(0);
     setTotalErrors(0);
     setAccuracy(100);
-    setCharactersTyped(0);
+    setCharacterTyped(0);
     setCpm(0);
     setWpm(0);
     inputAreaRef.current.value = '';
     inputAreaRef.current.disabled = true;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Render typing session game interface
+return (
+    <div className="type-tutor">
+        <div className="header">
+            <h1>Type Tutor</h1>
+            <div className="difficulty-selector">
+                <label htmlFor="difficulty">Select Difficulty:</label>
+                <select
+                    id="difficulty"
+                    value={difficulty}
+                    onChange={(e) => setDifficulty(e.target.value)}
+                >
+                    <option value="Beginner">Beginner</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+        </div>
+        <div className="stats">
+            <p className="timer">Time Left: <span className="curr_time">{timeLeft}s</span></p>
+            <p className="accuracy">Accuracy: <span className="curr_accuracy">{accuracy}%</span></p>
+            <p className="errors">Errors: <span className="curr_errors">{totalErrors + errors}</span></p>
+            <p className="cpm">CPM: <span className="curr_cpm">{cpm}</span></p>
+            <p className="wpm">WPM: <span className="curr_wpm">{wpm}</span></p>
+        </div>
+        <div className="quote">
+            {currentQuote.split('').map((char, index) => (
+                <span key={index} className={`char ${typedText[index] === char ? 'correct_char' : typedText[index] ? 'incorrect_char' : ''}`}>
+                    {char}
+                </span>
+            ))}
+        </div>
+        <textarea
+            ref={inputAreaRef}
+            className="input_area"
+            value={typedText}
+            onChange={(e) => {
+                setTypedText(e.target.value);
+                processCurrentText(e.target.value);
+            }}
+            disabled
+            placeholder="To start, please start typing here..."
+        />
+        <button className="restart_button" onClick={startGame}>
+            {timer ? "Restart" : "Start"}
+        </button>
+    </div>
+    );
 };
+
+export default TypeTutor;
