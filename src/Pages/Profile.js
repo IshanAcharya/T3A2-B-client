@@ -19,7 +19,7 @@ const Profile = () => {
     // Fetch user sessions from backend API - WIP until backend is coded********
     useEffect(() => {
 
-    }
+    })
 
     // Function to validate update form input
     const validateForm = () => {
@@ -71,14 +71,14 @@ const Profile = () => {
             <Navbar />
             <div className="profile-container">
                 <ProfileForm
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                handleSubmit={handleSubmit}
-                errors={errors}
-                success={success}
-            />
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={handleSubmit}
+                    errors={errors}
+                    success={success}
+                />
                 <button onClick={handleLogout} className="button logout">Logout</button>
             </div>
             <PastSessionsTable sessions={sessions} />
