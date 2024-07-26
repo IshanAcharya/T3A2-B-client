@@ -79,7 +79,7 @@ const Profile = () => {
                     errors={errors}
                     success={success}
                 />
-                <button onClick={handleLogout} className="button logout">Logout</button>
+                <button onClick={handleLogout} className="button">Logout</button>
             </div>
             <PastSessionsTable sessions={sessions} />
         </div>
