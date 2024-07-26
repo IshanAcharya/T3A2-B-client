@@ -51,36 +51,42 @@ const LoginRegister = () => {
         history.push('/profile');
     };
 
-    
+    return (
+        <div className="login-register">
+            <Header />
+            <div className="form-container">
+                <h2>{isLogin ? 'Login' : 'Register'}</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="email">Email:</label>
+                        <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        />
+                        {errors.email && <p className="error">{errors.email}</p>}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password:</label>
+                        <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        />
+                        {errors.password && <p className="error">{errors.password}</p>}
+                    </div>
+                    <button type="submit" className="button">{isLogin ? 'Login' : 'Register'}</button>
+                </form>
+                <button onClick={() => setIsLogin(!isLogin)} className="toggle-button">
+                    {isLogin ? 'Switch to Register' : 'Switch to Login'}
+                </button>
+            </div>
+        </div>
+    );
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+export default LoginRegister;
