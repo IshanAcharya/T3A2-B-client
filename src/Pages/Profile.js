@@ -63,12 +63,27 @@ const Profile = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         window.location.href = '/';
-    }
+    };
 
-
-
-
-
-
-
+    return ( 
+        <div className="profile">
+            <Header />
+            <Navbar />
+            <div className="profile-container">
+                <ProfileForm
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                handleSubmit={handleSubmit}
+                errors={errors}
+                success={success}
+            />
+                <button onClick={handleLogout} className="button logout">Logout</button>
+            </div>
+            <PastSessionsTable sessions={sessions} />
+        </div>
+    );
 };
+
+export default Profile;
