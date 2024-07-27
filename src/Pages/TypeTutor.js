@@ -104,8 +104,8 @@ const TypeTutor = () => {
 
     // Function to update timer during type tutor session
     const updateTimer = () => {
-        setTimeLeft((prevTimeLeft) => prevTimeLeft -1);
-        setTimeElapsed((prevTimeElapsed) => prevTimeElapsed +1);
+        setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+        setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
     };
 
     // Function to start type tutor typing session
@@ -172,7 +172,10 @@ const TypeTutor = () => {
                 <TypingArea
                     quote={currentQuote}
                     typedText={typedText}
-                    onTyping={processCurrentText}
+                    onTyping={(value) => {
+                        setTypedText(value);
+                        processCurrentText(value);
+                    }}
                     inputRef={inputAreaRef}
                 />
                 <RestartButton onRestart={resetValues} />
