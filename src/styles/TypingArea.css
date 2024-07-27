@@ -36,7 +36,7 @@
 }
 
 .input_area:disabled {
-    background-color: #2E8FE9;
+    background-color: white;
 }
 
 @media (max-width: 600px) {

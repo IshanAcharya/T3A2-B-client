@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import '../styles/LoginRegister.css';
 
@@ -10,7 +10,7 @@ const LoginRegister = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
 
     // Function to validate login and register form inputs
@@ -48,7 +48,7 @@ const LoginRegister = () => {
 
         // Temporary login success for UI testing purposes
         localStorage.setItem('token', 'fake-jwt-token');
-        history.push('/profile');
+        navigate('/profile');
     };
 
     return (

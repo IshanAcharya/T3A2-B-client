@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="nav-logo">
-                <link to="/***enterlogo***">Type Tutor</link>
+                <Link to="/">Type Tutor</Link>
             </div>
             <div className="nav-links">
                 <Link to="/type-tutor">Type Tutor</Link>
