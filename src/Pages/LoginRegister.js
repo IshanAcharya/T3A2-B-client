@@ -45,7 +45,7 @@ const LoginRegister = () => {
         }
 
         try { 
-            const endpoint = isLogin? '/api/auth/login' : '/api/auth/register';
+            const endpoint = isLogin? '/auth/login' : '/auth/register';
             const response = await axios.post(endpoint, { email, password });
 
             localStorage.setItem('token', response.data.token);
