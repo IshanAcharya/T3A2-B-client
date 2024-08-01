@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef} from 'react';
 import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import GameStats from '../components/GameStats';
 import RestartButton from '../components/RestartButton';
 import TypingArea from '../components/TypingArea';
@@ -165,6 +166,7 @@ const TypeTutor = () => {
     return (
         <div className="type-tutor">
             <Header />
+            <Navbar />
                 <div className="difficulty-selector">
                     <label htmlFor="difficulty">Select Difficulty:</label>
                     <select
