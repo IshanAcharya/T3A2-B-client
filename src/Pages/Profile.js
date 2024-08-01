@@ -3,23 +3,50 @@ import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProfileForm from '../components/ProfileForm';
 import PastSessionsTable from '../components/PastSessionsTable';
+import axios from '../utils/axiosConfig';
 import '../styles/Profile.css';
 
 
 // Define Profile component
 const Profile = () => {
     // State variables for profile information and user's past typing sessions
-    const [email, setEmail] = useState('userexample@email.com');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState('');
     const [sessions, setSessions] = useState([]);
 
 
-    // Fetch user sessions from backend API - WIP until backend is coded********
+    // Fetch user sessions from backend API
     useEffect(() => {
+        const fetchProfile = async () => {
+            try { 
+                const token = localStorage.getItem('token');
+                const response = await axios.get('/api/profile', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setEmail(response.data.email);
+            }   catch (error) {
+                console.error('Error fetching profile:', error);
+            }
+        };
 
-    })
+        const fetchSessions = async () => {
+            try { 
+                const token = localStorage.getItem('token');
+                const response = await axios.get('/api/sessions', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setSessions(response.data);
+            }   catch (error) {
+                console.error('Error fetching sessions:', error);
+            }
+        };
+
+        fetchProfile();
+        fetchSessions();
+
+    }, []);
 
     // Function to validate update form input
     const validateForm = () => {
@@ -50,13 +77,18 @@ const Profile = () => {
             return;
         }
     
+        // API call to update profile
+        try { 
+            const token = localStorage.getItem('token');
+            const response = await axios.put('/api/profile', { email, password }, {
+                    headers: { Authorization: `Bearer ${token}` },
+            });
 
-        // Add code for API call to update profile - WIP until backend is coded********
-
-
-        // Temporary success message for UI testing
-        setSuccess('Profile updated successfully!');
-        setTimeout(() => setSuccess(''), 3000);
+            setSuccess('Profile updated successfully!');
+            setTimeout(() => setSuccess(''), 3000);
+        }   catch (error) {
+            console.error('Error updating profile:', error);
+        }
     };
 
     // Function to handle user logout

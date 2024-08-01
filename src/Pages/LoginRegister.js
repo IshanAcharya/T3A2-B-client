@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import axios from '../utils/axiosConfig';
 import '../styles/LoginRegister.css';
 
 // Define LoginRegister component
@@ -43,12 +44,15 @@ const LoginRegister = () => {
             return;
         }
 
-        // Placeholder to insert backend API call***********
-        console.log('Form submitted:', { email, password, isLogin });
+        try { 
+            const endpoint = isLogin? '/api/auth/login' : '/api/auth/register';
+            const response = await axios.post(endpoint, { email, password });
 
-        // Temporary login success for UI testing purposes
-        localStorage.setItem('token', 'fake-jwt-token');
-        navigate('/profile');
+            localStorage.setItem('token', response.data.token);
+            navigate('/profile');
+        }   catch (error) {
+            setErrors('Error during authentication:', error);
+        }
     };
 
     return (

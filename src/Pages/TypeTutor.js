@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import GameStats from '../components/GameStats';
 import RestartButton from '../components/RestartButton';
 import TypingArea from '../components/TypingArea';
+import axios from '../utils/axiosConfig';
 import '../styles/TypeTutor.css';
 
 // Define time limit for the type tutor session
@@ -117,7 +118,7 @@ const TypeTutor = () => {
     };
 
     // Function to finish type tutor typing session
-    const finishGame = () => {
+    const finishGame = async () => {
         clearInterval(timer);
         setTimer(null);
 
@@ -127,6 +128,23 @@ const TypeTutor = () => {
 
         setCpm(finalCpm);
         setWpm(finalWpm);
+
+        // Save session data to backend
+        try { 
+            const token = localStorage.getItem('token');
+            await axios.post('/api/sessions', {
+                    date: new Date().toISOString(),
+                    difficulty: difficulty,
+                    wpm: finalWpm,
+                    cpm: finalCpm,
+                    accuracy: accuracy,
+                    errors: totalErrors,
+                }, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+        }   catch (error) {
+                console.error('Error saving session', error);
+        }
     };
 
     // Function to reset typing session game values
