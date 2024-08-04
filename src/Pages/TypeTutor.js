@@ -69,6 +69,14 @@ const TypeTutor = () => {
         }
     }, [timeLeft]);
 
+    // Effect to ensure that the timer starts once the game starts and stops when the game finishes
+    useEffect(() => {
+        if (hasStarted && !timer) {
+            setTimer(setInterval(updateTimer, 1000));
+        }
+        return () => clearInterval(timer);
+    }, [hasStarted, timer]);
+
     // Function to update the quote for difficulty based on random quote from each difficulty
     const updateQuote = () => {
         const quotes = quotesArray[difficulty];
@@ -98,7 +106,7 @@ const TypeTutor = () => {
 
         // Calculate accuracy of user input during session
         const correctCharacters = characterTyped - (totalErrors + newErrors);
-        const accuracyVal = (correctCharacters / characterTyped) * 100;
+        const accuracyVal = (correctCharacters / (characterTyped || 1)) * 100;
         setAccuracy(Math.round(accuracyVal));
 
         // Reset text to update quote if user input exceeds quote length 
@@ -118,8 +126,6 @@ const TypeTutor = () => {
     // Function to start type tutor typing session
     const startGame = () => {
         setHasStarted(true);
-        resetValues();
-        setTimer(setInterval(updateTimer, 1000));
         inputAreaRef.current.disabled = false;
         inputAreaRef.current.focus();
     };
@@ -128,6 +134,7 @@ const TypeTutor = () => {
     const finishGame = async () => {
         clearInterval(timer);
         setTimer(null);
+        setHasStarted(false);
 
         // Calculate user's final CPM and WPM
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
@@ -156,6 +163,8 @@ const TypeTutor = () => {
 
     // Function to reset typing session game values
     const resetValues = () => {
+        clearInterval(timer);
+        setTimer(null);
         setTimeLeft(time_limit);
         setTimeElapsed(0);
         setErrors(0);
