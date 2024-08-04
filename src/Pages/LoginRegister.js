@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import axios from '../utils/axiosConfig';
+import axiosInstance from '../utils/axiosConfig';
 import '../styles/LoginRegister.css';
 
 // Define LoginRegister component
@@ -46,7 +46,7 @@ const LoginRegister = () => {
 
         try { 
             const endpoint = isLogin? '/auth/login' : '/auth/register';
-            const response = await axios.post(endpoint, { email, password });
+            const response = await axiosInstance.post(endpoint, { email, password });
 
             localStorage.setItem('token', response.data.token);
             navigate('/profile');

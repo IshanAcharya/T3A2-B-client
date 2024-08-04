@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import GameStats from '../components/GameStats';
 import RestartButton from '../components/RestartButton';
 import TypingArea from '../components/TypingArea';
-import axios from '../utils/axiosConfig';
+import axiosInstance from '../utils/axiosConfig';
 import '../styles/TypeTutor.css';
 
 // Define time limit for the type tutor session
@@ -133,7 +133,7 @@ const TypeTutor = () => {
         // Save session data to backend
         try { 
             const token = localStorage.getItem('token');
-            await axios.post('/api/sessions', {
+            await axiosInstance.post('/api/sessions', {
                     date: new Date().toISOString(),
                     difficulty: difficulty,
                     wpm: finalWpm,

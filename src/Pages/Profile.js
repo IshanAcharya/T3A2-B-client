@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import ProfileForm from '../components/ProfileForm';
 import PastSessionsTable from '../components/PastSessionsTable';
-import axios from '../utils/axiosConfig';
+import axiosInstance from '../utils/axiosConfig';
 import '../styles/Profile.css';
 
 
@@ -22,7 +22,7 @@ const Profile = () => {
         const fetchProfile = async () => {
             try { 
                 const token = localStorage.getItem('token');
-                const response = await axios.get('/api/profile', {
+                const response = await axiosInstance.get('/api/profile', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setEmail(response.data.email);
@@ -34,7 +34,7 @@ const Profile = () => {
         const fetchSessions = async () => {
             try { 
                 const token = localStorage.getItem('token');
-                const response = await axios.get('/api/sessions', {
+                const response = await axiosInstance.get('/api/sessions', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setSessions(response.data);
@@ -80,7 +80,7 @@ const Profile = () => {
         // API call to update profile
         try { 
             const token = localStorage.getItem('token');
-            const response = await axios.put('/api/profile', { email, password }, {
+            const response = await axiosInstance.put('/api/profile', { email, password }, {
                     headers: { Authorization: `Bearer ${token}` },
             });
 
