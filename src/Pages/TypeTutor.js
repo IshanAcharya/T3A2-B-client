@@ -55,6 +55,7 @@ const TypeTutor = () => {
     const [cpm, setCpm] = useState(0);
     const [wpm, setWpm] = useState(0);
     const inputAreaRef = useRef(null);
+    const [hasStarted, setHasStarted,] = useState(false);
 
     // Add effect to update quote to respective difficulty assigned when user changes difficulty
     useEffect(() => {
@@ -77,6 +78,10 @@ const TypeTutor = () => {
 
     // Function to process text input by user during session
     const processCurrentText = (typedText) => {
+        if (!hasStarted) {
+            startGame();
+        }
+
         const quoteSpanArray = currentQuote.split('');
         let newErrors = 0;
 
@@ -112,6 +117,7 @@ const TypeTutor = () => {
 
     // Function to start type tutor typing session
     const startGame = () => {
+        setHasStarted(true);
         resetValues();
         setTimer(setInterval(updateTimer, 1000));
         inputAreaRef.current.disabled = false;
@@ -160,6 +166,7 @@ const TypeTutor = () => {
         setWpm(0);
         inputAreaRef.current.value = '';
         inputAreaRef.current.disabled = true;
+        setHasStarted(false);
     };
 
     // Render typing session game interface
