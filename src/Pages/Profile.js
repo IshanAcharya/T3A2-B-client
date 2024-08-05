@@ -22,7 +22,7 @@ const Profile = () => {
         const fetchProfile = async () => {
             try { 
                 const token = localStorage.getItem('token');
-                const response = await axiosInstance.get('/api/profile', {
+                const response = await axiosInstance.get('/profile', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setEmail(response.data.email);
@@ -34,7 +34,7 @@ const Profile = () => {
         const fetchSessions = async () => {
             try { 
                 const token = localStorage.getItem('token');
-                const response = await axiosInstance.get('/api/sessions', {
+                const response = await axiosInstance.get('/sessions', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setSessions(response.data);
