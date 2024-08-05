@@ -236,6 +236,7 @@ const TypeTutor = () => {
                         processCurrentText(value);
                     }}
                     inputRef={inputAreaRef}
+                    errors={errors}
                 />
                 <RestartButton onRestart={resetValues} />
             </div>

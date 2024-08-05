@@ -4,10 +4,11 @@
     align-items: center;
 }
 
-.quote {
+.quote-display {
     margin-bottom: 20px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 .char {
@@ -15,12 +16,17 @@
     padding: 2px;
 }
 
-.correct_char {
+.correct {
     color: green;
 }
 
-.incorrect_char {
+.error {
     color: red;
+    text-decoration: underline;
+}
+
+.space-error {
+    background-color: red;
 }
 
 .input_area {
