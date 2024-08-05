@@ -106,7 +106,7 @@ const TypeTutor = () => {
 
         // Calculate accuracy of user input during session
         const correctCharacters = typedText.length - newErrors;
-        const accuracyVal = ((correctCharacters / typedText.legnth)|| 1) * 100;
+        const accuracyVal = ((correctCharacters / typedText.length)|| 1) * 100;
         setAccuracy(Math.max(0, Math.round(accuracyVal)));
 
         // Reset text to update quote if user input exceeds quote length 
