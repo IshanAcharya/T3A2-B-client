@@ -156,8 +156,9 @@ const TypeTutor = () => {
         inputAreaRef.current.disabled = true;
 
         // Calculate user's final CPM and WPM
+        const wordsTyped = typedText.split(' ').length - 1;
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
-        const finalWpm = Math.round((totalCharactersTyped / 5 / timeElapsed) * 60);
+        const finalWpm = Math.round((wordsTyped / timeElapsed) * 60);
 
         setCpm(finalCpm);
         setWpm(finalWpm);
