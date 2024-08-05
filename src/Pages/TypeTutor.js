@@ -103,16 +103,18 @@ const TypeTutor = () => {
             }
         });
 
+        const newTypedLength = typedText.length;
+
         setErrors(newErrors);
         setCharacterTyped(typedText.length);
 
         // Update total characters typed and total errors
-        setTotalCharactersTyped(prevTotal => prevTotal + typedText.length - characterTyped);
-        setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors - errors);
+        setTotalCharactersTyped(prevTotal => prevTotal + newTypedLength);
+        setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors);
 
         // Calculate accuracy of user input during session
-        const totalCorrectCharacters = totalCharactersTyped + typedText.length - (totalErrorsAcrossQuotes + newErrors);
-        const totalTyped = totalCharactersTyped + typedText.length;
+        const totalCorrectCharacters = totalCharactersTyped + newTypedLength - (totalErrorsAcrossQuotes + newErrors);
+        const totalTyped = totalCharactersTyped + newTypedLength;
         const accuracyVal = totalTyped > 0 ? (totalCorrectCharacters / totalTyped) * 100 : 100;
         setAccuracy(Math.round(accuracyVal));
 
@@ -151,6 +153,7 @@ const TypeTutor = () => {
         setTimer(null);
         setHasStarted(false);
         setTimeLeft(0);
+        inputAreaRef.current.disabled = true;
 
         // Calculate user's final CPM and WPM
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
