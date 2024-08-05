@@ -64,7 +64,7 @@ const TypeTutor = () => {
 
     // Add effect to finish the typetutor game session once the timer runs out
     useEffect(() => {
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             finishGame();
         }
     }, [timeLeft]);
@@ -105,9 +105,9 @@ const TypeTutor = () => {
         setCharacterTyped(typedText.length);
 
         // Calculate accuracy of user input during session
-        const correctCharacters = characterTyped - (totalErrors + newErrors);
-        const accuracyVal = (correctCharacters / (characterTyped || 1)) * 100;
-        setAccuracy(Math.round(accuracyVal));
+        const correctCharacters = typedText.legnth - newErrors;
+        const accuracyVal = ((correctCharacters / typedText.legnth)|| 1) * 100;
+        setAccuracy(Math.max(0, Math.round(accuracyVal)));
 
         // Reset text to update quote if user input exceeds quote length 
         if (typedText.length === currentQuote.length) {
@@ -119,7 +119,15 @@ const TypeTutor = () => {
 
     // Function to update timer during type tutor session
     const updateTimer = () => {
-        setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+        setTimeLeft((prevTimeLeft) => {
+            const newTimeLeft = prevTimeLeft -1;
+            if (newTimeLeft <= 0) {
+                clearInterval(timer);
+                finishGame();
+                return 0;
+            }
+            return newTimeLeft;
+        });
         setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
     };
 
@@ -135,6 +143,7 @@ const TypeTutor = () => {
         clearInterval(timer);
         setTimer(null);
         setHasStarted(false);
+        setTimeLeft(0);
 
         // Calculate user's final CPM and WPM
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
