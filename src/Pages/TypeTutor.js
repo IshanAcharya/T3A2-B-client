@@ -56,6 +56,8 @@ const TypeTutor = () => {
     const [wpm, setWpm] = useState(0);
     const inputAreaRef = useRef(null);
     const [hasStarted, setHasStarted,] = useState(false);
+    const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
+    const [totalErrorsAcrossQuotes, setTotalErrorsAcrossQuotes] = useState(0);
 
     // Add effect to update quote to respective difficulty assigned when user changes difficulty
     useEffect(() => {
@@ -104,15 +106,20 @@ const TypeTutor = () => {
         setErrors(newErrors);
         setCharacterTyped(typedText.length);
 
+        // Update total characters typed and total errors
+        setTotalCharactersTyped(prevTotal => prevTotal + typedText.length - characterTyped);
+        setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors - errors);
+
         // Calculate accuracy of user input during session
-        const correctCharacters = typedText.length - newErrors;
-        const accuracyVal = ((correctCharacters / typedText.length)|| 1) * 100;
+        const totalCorrectCharacters = totalCharactersTyped + typedText.length - (totalErrorsAcrossQuotes + newErrors);
+        const totalTyped = totalCharactersTyped + typedText.length;
+        const accuracyVal = totalTyped > 0 ? (totalCorrectCharacters / totalTyped) * 100 : 100;
         setAccuracy(Math.round(accuracyVal));
 
         // Reset text to update quote if user input exceeds quote length 
         if (typedText.length === currentQuote.length) {
             updateQuote();
-            setTotalErrors(totalErrors + newErrors);
+            setTotalErrors(prevTotal => prevTotal + newErrors);
             setTypedText('');
         }
     };
@@ -187,6 +194,8 @@ const TypeTutor = () => {
         inputAreaRef.current.disabled = false;
         setHasStarted(false);
         updateQuote();
+        setTotalCharactersTyped(0);
+        setTotalErrorsAcrossQuotes(0);
     };
 
     // Render typing session game interface
