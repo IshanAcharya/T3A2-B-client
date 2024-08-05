@@ -109,7 +109,7 @@ const TypeTutor = () => {
         setCharacterTyped(typedText.length);
 
         // Update total characters typed and total errors
-        setTotalCharactersTyped(prevTotal => prevTotal + newTypedLength);
+        setTotalCharactersTyped(prevTotal => prevTotal + (newTypedLength - characterTyped));
         setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors);
 
         // Calculate accuracy of user input during session
@@ -157,11 +157,11 @@ const TypeTutor = () => {
 
         // Calculate user's final CPM and WPM
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
-        const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
+        const finalWpm = Math.round(((totalCharactersTyped / 5) / timeElapsed) * 60);
 
         setCpm(finalCpm);
         setWpm(finalWpm);
-
+        
         // Save session data to backend
         try { 
             const token = localStorage.getItem('token');
