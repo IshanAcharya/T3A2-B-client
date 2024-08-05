@@ -96,7 +96,7 @@ const TypeTutor = () => {
         // Calculate number of errors made by user during session
         quoteSpanArray.forEach((char, index) => {
             const typedChar = typedText[index];
-            if (typedChar !== char) {
+            if (typedChar !== undefined && typedChar !== char) {
                 newErrors++;
             }
         });
@@ -105,7 +105,7 @@ const TypeTutor = () => {
         setCharacterTyped(typedText.length);
 
         // Calculate accuracy of user input during session
-        const correctCharacters = typedText.legnth - newErrors;
+        const correctCharacters = typedText.length - newErrors;
         const accuracyVal = ((correctCharacters / typedText.legnth)|| 1) * 100;
         setAccuracy(Math.max(0, Math.round(accuracyVal)));
 
@@ -182,9 +182,11 @@ const TypeTutor = () => {
         setCharacterTyped(0);
         setCpm(0);
         setWpm(0);
+        inputTypedText('');
         inputAreaRef.current.value = '';
-        inputAreaRef.current.disabled = true;
+        inputAreaRef.current.disabled = false;
         setHasStarted(false);
+        updateQuote();
     };
 
     // Render typing session game interface
