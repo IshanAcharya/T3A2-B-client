@@ -165,7 +165,7 @@ const TypeTutor = () => {
         // Save session data to backend
         try { 
             const token = localStorage.getItem('token');
-            await axiosInstance.post('/api/sessions', {
+            await axiosInstance.post('/sessions', {
                     date: new Date().toISOString(),
                     difficulty: difficulty,
                     wpm: finalWpm,
