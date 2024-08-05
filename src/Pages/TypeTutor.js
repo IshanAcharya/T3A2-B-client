@@ -15,7 +15,11 @@ const quotesArray = {
     Beginner: [
         "Typing is fun. Practice makes perfect. Slow and steady wins the race.",
         "a b c d e f g h i j k l m n o p q r s t u v w x y z",
-        "1 2 3 4 5 6 7 8 9 10"
+        "1 2 3 4 5 6 7 8 9 10",
+        "` ! @ # $ % ^ & * ( ) _ +",
+        "q w e r t y u i o p [ ]",
+        "a s d f g h j k l ; '",
+        "z x c v b n m , . /"
     ],
     Easy: [
         "Practice typing daily to improve your skills. Remember to sit up straight and keep your fingers on the home row. Enjoy the process and have fun.",
@@ -109,7 +113,7 @@ const TypeTutor = () => {
         setCharacterTyped(typedText.length);
 
         // Update total characters typed and total errors
-        setTotalCharactersTyped(prevTotal => prevTotal + Math.floor(newTypedLength / 5));
+        setTotalCharactersTyped(prevTotal => prevTotal + newTypedLength);
         setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors);
 
         // Calculate accuracy of user input during session
@@ -156,10 +160,8 @@ const TypeTutor = () => {
         inputAreaRef.current.disabled = true;
 
         // Calculate user's final CPM and WPM
-        const wordsTyped = typedText.split(' '.length);
-        const correctWordsTyped = wordsTyped - totalErrorsAcrossQuotes;
         const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
-        const finalWpm = Math.round((correctWordsTyped / timeElapsed) * 60);
+        const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
 
         setCpm(finalCpm);
         setWpm(finalWpm);
