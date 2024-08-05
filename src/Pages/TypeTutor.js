@@ -182,7 +182,7 @@ const TypeTutor = () => {
         setCharacterTyped(0);
         setCpm(0);
         setWpm(0);
-        inputTypedText('');
+        setTypedText('');
         inputAreaRef.current.value = '';
         inputAreaRef.current.disabled = false;
         setHasStarted(false);
