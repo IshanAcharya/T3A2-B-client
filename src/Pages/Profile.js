@@ -80,7 +80,7 @@ const Profile = () => {
         // API call to update profile
         try { 
             const token = localStorage.getItem('token');
-            const response = await axiosInstance.put('/api/profile', { email, password }, {
+            await axiosInstance.put('/profile', { email, password }, {
                     headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -95,6 +95,20 @@ const Profile = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         window.location.href = '/';
+    };
+
+    // Function to delete user account
+    const handleDeleteAccount = async () => {
+        try { 
+            const token = localStorage.getItem('token');
+            await axiosInstance.delete('/profile', {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            localStorage.removeItem('token');
+            window.location.href ='/';
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        }
     };
 
     return ( 
@@ -112,6 +126,7 @@ const Profile = () => {
                     success={success}
                 />
                 <button onClick={handleLogout} className="button">Logout</button>
+                <button onClick={handleDeleteAccount} className="delete-button">Delete Account</button>
             </div>
             <PastSessionsTable sessions={sessions} />
         </div>
