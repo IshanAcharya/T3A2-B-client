@@ -59,6 +59,20 @@ const LoginRegister = () => {
         <div className="login-register">
             <Header />
             <div className="form-container">
+                <div className="toggle-container">
+                    <button 
+                        className={`toggle-button ${isLogin ? 'active' : ''}`} 
+                        onClick={() => setIsLogin(true)}
+                    >
+                        Login
+                    </button>
+                    <button 
+                        className={`toggle-button ${!isLogin ? 'active' : ''}`} 
+                        onClick={() => setIsLogin(false)}
+                    >
+                        Register
+                    </button>
+                </div>
                 <h2>{isLogin ? 'Login' : 'Register'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -85,9 +99,6 @@ const LoginRegister = () => {
                     </div>
                     <button type="submit" className="button">{isLogin ? 'Login' : 'Register'}</button>
                 </form>
-                <button onClick={() => setIsLogin(!isLogin)} className="toggle-button">
-                    {isLogin ? 'Switch to Register' : 'Switch to Login'}
-                </button>
             </div>
         </div>
     );

@@ -11,7 +11,7 @@ const Home = () => {
                 <p>In today's digital age, typing speed and accuracy are crucial life skills. Don't get left behind, improve your skills with the Type Tutor App.</p>
                 <div className="home-buttons">
                     <Link to="/login-register" className="button">
-                        Login/Register
+                        Start Typing
                     </Link>
                 </div>
             </div>

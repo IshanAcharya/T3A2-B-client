@@ -2,6 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     overflow: hidden;
+    font-family: 'Arial', sans-serif;
 }
 
 .home {
@@ -20,6 +21,11 @@ body, html {
     font-size: 16px;
     margin-bottom: 20px;
     max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: #2E8FE9;
+    color: #000000; 
+    font-style: italic;
 }
 
 .home-buttons .button {
@@ -32,6 +38,7 @@ body, html {
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
+    font-size: 16px;
 }
 
 .home-buttons .button:hover {

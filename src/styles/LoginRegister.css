@@ -1,3 +1,10 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
 .login-register {
     display: flex;
     flex-direction: column;
@@ -11,16 +18,45 @@
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px #2E8FE9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
     margin-top: 20px;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.toggle-button {
+    width: 48%;
+    padding: 10px;
+    background-color: #2E8FE9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+.toggle-button.active {
+    background-color: white;
+    color: #2E8FE9;
+    border: 1px solid #2E8FE9;
 }
 
 .form-container h2 {
     margin-bottom: 20px;
     color: #333;
     text-align: center;
+    font-weight: 700;
 }
 
 .form-group {
@@ -31,6 +67,7 @@
     display: block;
     margin-bottom: 5px;
     color: #333;
+    font-weight: 400;
 }
 
 .form-group input {
@@ -43,12 +80,12 @@
 
 .error {
     color: red;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 5px;
 }
 
 .button {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     background-color: #2E8FE9;
     color: white;
@@ -60,21 +97,5 @@
 }
 
 .button:hover {
-    background-color: #2E8FE9;
-}
-
-.toggle-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2E8FE9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.toggle-button:hover {
-    background-color: #2E8FE9;
+    background-color: #0056b3;
 }
