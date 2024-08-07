@@ -1,3 +1,10 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -14,10 +21,11 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-.button.logout {
-    width: 100%;
+.button, .delete-button, .logout-button {
+    width: 80%; /* make button widths narrower */
     padding: 10px;
     background-color: #2E8FE9;
     color: white;
@@ -28,6 +36,59 @@
     margin-top: 10px;
 }
 
-.button.logout:hover {
+.update-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.logout-button, .delete-button {
+    width: 48%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.delete-button {
+    background-color: red;
+    margin-right: 2%;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.past-sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.past-sessions-table th, .past-sessions-table td {
+    border: 1px solid #2E8FE9;
+    padding: 8px;
+    text-align: center;
+}
+
+.past-sessions-table th {
     background-color: #2E8FE9;
+    color: white;
+}
+
+.past-sessions-table td {
+    background-color: white;
+    color: #333;
 }
