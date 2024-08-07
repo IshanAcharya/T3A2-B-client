@@ -125,7 +125,6 @@ const Profile = () => {
                     errors={errors}
                     success={success}
                 />
-                <button onClick={handleSubmit} className="button update-button">Update Profile</button>
                 <div className="bottom-buttons">
                     <button onClick={handleDeleteAccount} className="delete-button">Delete Account</button>
                     <button onClick={handleLogout} className="button logout-button">Logout</button>

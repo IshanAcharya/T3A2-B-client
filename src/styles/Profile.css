@@ -25,7 +25,7 @@ body, html {
 }
 
 .button, .delete-button, .logout-button {
-    width: 80%; /* make button widths narrower */
+    width: 80%;
     padding: 10px;
     background-color: #2E8FE9;
     color: white;
@@ -34,13 +34,6 @@ body, html {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
-}
-
-.update-button {
-    width: 100%;
-    padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .logout-button, .delete-button {

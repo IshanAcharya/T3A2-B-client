@@ -2,12 +2,13 @@
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
+    border: 1px solid #2E8FE9;
 }
 
 .past-sessions-table th,
 .past-sessions-table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #2E8FE9;
     text-align: left;
 }
 
