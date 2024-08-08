@@ -12,7 +12,9 @@ body, html {
     align-items: center;
     padding: 20px;
     background: linear-gradient(to bottom right, white, #2E8FE9);
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 /* Form container styling */

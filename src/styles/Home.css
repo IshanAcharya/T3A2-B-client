@@ -10,12 +10,13 @@ body, html {
     text-align: center;
     padding: 20px;
     background: linear-gradient(to bottom right, white, #2E8FE9);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
 }
 
 /* Styling for the content within the home page */
