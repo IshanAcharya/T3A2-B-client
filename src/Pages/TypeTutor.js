@@ -48,11 +48,10 @@ const TypeTutor = () => {
     // State variables for TypeTutor game
     const [difficulty, setDifficulty] = useState('Beginner');
     const [timeLeft, setTimeLeft] = useState(time_limit);
-    const [timeElapsed, setTimeElapsed] = useState(0);
+    const [totalTimeElapsed, setTotalTimeElapsed] = useState(0);
     const [totalErrors, setTotalErrors] = useState(0);
     const [errors, setErrors] = useState(0);
     const [accuracy, setAccuracy] = useState(100);
-    const [characterTyped, setCharacterTyped] = useState(0);
     const [typedText, setTypedText] = useState('');
     const [currentQuote, setCurrentQuote] = useState('');
     const [timer, setTimer] = useState(null);
@@ -62,6 +61,7 @@ const TypeTutor = () => {
     const [hasStarted, setHasStarted,] = useState(false);
     const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
     const [totalErrorsAcrossQuotes, setTotalErrorsAcrossQuotes] = useState(0);
+    const [totalWordsTyped, setTotalWordsTyped] = useState(0);
 
     // Add effect to update quote to respective difficulty assigned when user changes difficulty
     useEffect(() => {
@@ -94,6 +94,7 @@ const TypeTutor = () => {
     const processCurrentText = (typedText) => {
         if (!hasStarted) {
             startGame();
+            setTotalTimeElapsed(0);
         }
 
         const quoteSpanArray = currentQuote.split('');
@@ -108,17 +109,11 @@ const TypeTutor = () => {
         });
 
         const newTypedLength = typedText.length;
-
         setErrors(newErrors);
-        setCharacterTyped(typedText.length);
-
-        // Update total characters typed and total errors
-        setTotalCharactersTyped(prevTotal => prevTotal + newTypedLength);
-        setTotalErrorsAcrossQuotes(prevTotal => prevTotal + newErrors);
 
         // Calculate accuracy of user input during session
-        const totalCorrectCharacters = totalCharactersTyped + newTypedLength - (totalErrorsAcrossQuotes + newErrors);
-        const totalTyped = totalCharactersTyped + newTypedLength;
+        const totalTyped = typedText.length;
+        const totalCorrectCharacters = totalTyped - newErrors;
         const accuracyVal = totalTyped > 0 ? (totalCorrectCharacters / totalTyped) * 100 : 100;
         setAccuracy(Math.round(accuracyVal));
 
@@ -126,14 +121,18 @@ const TypeTutor = () => {
         if (typedText.length === currentQuote.length) {
             updateQuote();
             setTotalErrors(prevTotal => prevTotal + newErrors);
+            setTotalCharactersTyped(prevTotal => prevTotal + newTypedLength);
+            setTotalWordsTyped(prevTotal => prevTotal + typedText.split(' ').length);
             setTypedText('');
+        } else {
+            setTypedText(typedText);
         }
     };
 
     // Function to update timer during type tutor session
     const updateTimer = () => {
         setTimeLeft((prevTimeLeft) => {
-            const newTimeLeft = prevTimeLeft -1;
+            const newTimeLeft = prevTimeLeft - 1;
             if (newTimeLeft <= 0) {
                 clearInterval(timer);
                 finishGame();
@@ -141,7 +140,7 @@ const TypeTutor = () => {
             }
             return newTimeLeft;
         });
-        setTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
+        setTotalTimeElapsed((prevTimeElapsed) => prevTimeElapsed + 1);
     };
 
     // Function to start type tutor typing session
@@ -156,31 +155,33 @@ const TypeTutor = () => {
         clearInterval(timer);
         setTimer(null);
         setHasStarted(false);
-        setTimeLeft(0);
         inputAreaRef.current.disabled = true;
 
-        // Calculate user's final CPM and WPM
-        const finalCpm = Math.round((characterTyped / timeElapsed) * 60);
-        const finalWpm = Math.round((characterTyped / 5 / timeElapsed) * 60);
+        // Calculate the total time elapsed in minutes
+        const totalTimeMinutes = totalTimeElapsed / 60;
+
+        // Calculate final CPM and WPM
+        const finalCpm = Math.round(totalCharactersTyped / totalTimeMinutes);
+        const finalWpm = Math.round((totalCharactersTyped / 5) / totalTimeMinutes);
 
         setCpm(finalCpm);
         setWpm(finalWpm);
-        
+
         // Save session data to backend
-        try { 
+        try {
             const token = localStorage.getItem('token');
             await axiosInstance.post('/sessions', {
-                    date: new Date().toISOString(),
-                    difficulty: difficulty,
-                    wpm: finalWpm,
-                    cpm: finalCpm,
-                    accuracy: accuracy,
-                    errors: totalErrors,
-                }, {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
-        }   catch (error) {
-                console.error('Error saving session', error);
+                date: new Date().toISOString(),
+                difficulty: difficulty,
+                wpm: finalWpm,
+                cpm: finalCpm,
+                accuracy: accuracy,
+                errors: totalErrors,
+            }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+        } catch (error) {
+            console.error('Error saving session', error);
         }
     };
 
@@ -189,11 +190,10 @@ const TypeTutor = () => {
         clearInterval(timer);
         setTimer(null);
         setTimeLeft(time_limit);
-        setTimeElapsed(0);
+        setTotalTimeElapsed(0);
         setErrors(0);
         setTotalErrors(0);
         setAccuracy(100);
-        setCharacterTyped(0);
         setCpm(0);
         setWpm(0);
         setTypedText('');
@@ -203,6 +203,7 @@ const TypeTutor = () => {
         updateQuote();
         setTotalCharactersTyped(0);
         setTotalErrorsAcrossQuotes(0);
+        setTotalWordsTyped(0);
     };
 
     // Render typing session game interface
