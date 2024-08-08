@@ -13,12 +13,12 @@ const PastSessionsTable = ({sessions}) => {
     };
 
     return (
-        <div className="past-sessions-table">
+        <div className="past-sessions-table-container">
             <h2>Past Type Tutor Sessions</h2>
             {sessions.length === 0? (
                 <p>No sessions found</p>
             ) : (
-                <table>
+                <table className="past-sessions-table">
                     <thead>
                         <tr>
                             <th>Date</th>
