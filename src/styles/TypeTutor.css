@@ -83,6 +83,11 @@ body.typetutor-body, html.typetutor-body {
     word-wrap: break-word;
     overflow-wrap: break-word;
     width: 100%;
+    font-family: 'Arial', sans-serif;
+    font-weight: 300;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .char {
