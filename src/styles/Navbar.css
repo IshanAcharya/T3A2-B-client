@@ -13,8 +13,9 @@
 .hamburger {
     display: block;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 50px;
     color: #2E8FE9;
+    margin-right: auto;
 }
 
 .nav-links {
@@ -34,6 +35,7 @@
 
 .nav-links.open {
     display: flex;
+    flex-direction: column;
 }
 
 .nav-links a {
