@@ -131,7 +131,7 @@ const Profile = () => {
                 </div>
             </div>
             <div className="past-sessions-container">
-            <PastSessionsTable sessions={sessions} />
+                <PastSessionsTable sessions={sessions} />
             </div>
         </div>
     );

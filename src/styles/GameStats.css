@@ -1,13 +1,15 @@
-.stats {
+.game-stats {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
 }
 
-.stats p {
+.game-stats p {
     margin: 0;
+    text-align: center;
+    flex: 1;
 }
 
 .curr_time,
@@ -16,15 +18,4 @@
 .curr_cpm,
 .curr_wpm {
     font-weight: bold;
-}
-
-@media (max-width: 600px) {
-    .stats {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stats p {
-        margin-bottom: 10px;
-    }
 }

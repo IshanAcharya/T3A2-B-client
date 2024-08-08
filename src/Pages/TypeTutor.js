@@ -224,14 +224,16 @@ const TypeTutor = () => {
                         <option value="Expert">Expert</option>
                     </select>
                 </div>
-                <GameStats
-                    timeLeft={timeLeft}
-                    totalErrors={totalErrors}
-                    errors={errors}
-                    accuracy={accuracy}
-                    cpm={cpm}
-                    wpm={wpm}
-                />
+                <div className="stats-container">
+                    <GameStats
+                        timeLeft={timeLeft}
+                        totalErrors={totalErrors}
+                        errors={errors}
+                        accuracy={accuracy}
+                        cpm={cpm}
+                        wpm={wpm}
+                    />
+                </div>
                 <TypingArea
                     quote={currentQuote}
                     typedText={typedText}
