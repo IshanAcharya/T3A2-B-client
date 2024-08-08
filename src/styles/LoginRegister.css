@@ -84,8 +84,8 @@ body, html {
     margin-top: 5px;
 }
 
-.button {
-    width: 80%;
+.submit-button {
+    width: 100%;
     padding: 10px;
     background-color: #2E8FE9;
     color: white;
@@ -96,6 +96,6 @@ body, html {
     margin-top: 10px;
 }
 
-.button:hover {
+.submit-button:hover {
     background-color: #0056b3;
 }

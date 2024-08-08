@@ -97,7 +97,7 @@ const LoginRegister = () => {
                         />
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>
-                    <button type="submit" className="button">{isLogin ? 'Login' : 'Register'}</button>
+                    <button type="submit" className="submit-button">{isLogin ? 'Login' : 'Register'}</button>
                 </form>
             </div>
         </div>

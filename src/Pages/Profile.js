@@ -130,7 +130,9 @@ const Profile = () => {
                     <button onClick={handleLogout} className="button logout-button">Logout</button>
                 </div>
             </div>
+            <div className="past-sessions-container">
             <PastSessionsTable sessions={sessions} />
+            </div>
         </div>
     );
 };

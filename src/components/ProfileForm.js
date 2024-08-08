@@ -27,7 +27,7 @@ const ProfileForm = ({ email, setEmail, password, setPassword, handleSubmit, err
                     />
                     {errors.password && <p className="error">{errors.password}</p>}
                 </div>
-                <button type="submit" className="button">Update Profile</button>
+                <button type="update" className="update-button">Update Profile</button>
                 {success && <p className="success">{success}</p>}
             </form>
         </div>
