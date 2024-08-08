@@ -13,7 +13,7 @@ const PastSessionsTable = ({sessions}) => {
     };
 
     return (
-        <div className="past-sessions">
+        <div className="past-sessions-table">
             <h2>Past Type Tutor Sessions</h2>
             {sessions.length === 0? (
                 <p>No sessions found</p>
