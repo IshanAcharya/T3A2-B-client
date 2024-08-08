@@ -16,6 +16,13 @@ const Profile = () => {
     const [success, setSuccess] = useState('');
     const [sessions, setSessions] = useState([]);
 
+    // Add and remove the profile-specific class to the body element
+    useEffect(() => {
+        document.body.classList.add('profile-body');
+        return () => {
+            document.body.classList.remove('profile-body');
+        };
+    }, []);
 
     // Fetch user profile and past typing sessions from backend API
     useEffect(() => {
