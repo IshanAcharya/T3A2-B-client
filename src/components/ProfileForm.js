@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/ProfileForm.css'
 
+// Define ProfileForm component to handle user's profile information update on profile page
 const ProfileForm = ({ email, setEmail, password, setPassword, handleSubmit, errors, success }) => {
     return (
         <div className="profile-form">

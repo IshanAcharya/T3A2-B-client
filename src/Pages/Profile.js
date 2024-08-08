@@ -17,8 +17,9 @@ const Profile = () => {
     const [sessions, setSessions] = useState([]);
 
 
-    // Fetch user sessions from backend API
+    // Fetch user profile and past typing sessions from backend API
     useEffect(() => {
+        // Fetch user profile
         const fetchProfile = async () => {
             try { 
                 const token = localStorage.getItem('token');
@@ -30,7 +31,8 @@ const Profile = () => {
                 console.error('Error fetching profile:', error);
             }
         };
-
+        
+        // Fetch user past typing sessions
         const fetchSessions = async () => {
             try { 
                 const token = localStorage.getItem('token');
@@ -111,6 +113,7 @@ const Profile = () => {
         }
     };
 
+    // Render the profile page
     return ( 
         <div className="profile">
             <Header />

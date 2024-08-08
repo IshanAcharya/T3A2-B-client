@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/TypingArea.css';
 
+// Define TypingArea component to display quote and handle user input during typing session
 const TypingArea = ({ quote, typedText, onTyping, inputRef, errors }) => {
   return (
     <div className="typing-area">

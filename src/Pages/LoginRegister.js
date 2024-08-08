@@ -7,7 +7,7 @@ import '../styles/LoginRegister.css';
 // Define LoginRegister component
 const LoginRegister = () => {
     // State variables for login/register form
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(true); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('');
@@ -54,7 +54,8 @@ const LoginRegister = () => {
             setErrors('Error during authentication:', error);
         }
     };
-
+    
+    // Render Login/Register page 
     return (
         <div className="login-register">
             <Header />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
+// Define Header component to display app's logo and title
 const Header = () => {
     return (
         <header className="header">

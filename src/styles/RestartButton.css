@@ -1,3 +1,4 @@
+/* Styling for the restart button */
 .restart_button {
     padding: 10px 20px; 
     font-size: 1.2em;
@@ -9,10 +10,12 @@
     transition: background-color 0.3s;
 }
 
+/* Hover effect for the restart button */
 .restart_button:hover {
     background-color: #2E8FE9;
 }
 
+/* Responsive styling for smaller screens */
 @media (max-width: 600px) {
     .restart_button {
         width: 90%;

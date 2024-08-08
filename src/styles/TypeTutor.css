@@ -5,6 +5,7 @@ body.typetutor-body, html.typetutor-body {
     font-family: 'Arial', sans-serif;
 }
 
+/* Container for the type tutor page */
 .type-tutor {
     display: flex;
     flex-direction: column;
@@ -16,6 +17,7 @@ body.typetutor-body, html.typetutor-body {
     box-sizing: border-box;
 }
 
+/* Styling for the difficulty selector container */
 .difficulty-selector {
     margin-bottom: 20px 0;
     width: 100%;
@@ -23,16 +25,19 @@ body.typetutor-body, html.typetutor-body {
     justify-content: center;
 }
 
+/* Styling for the difficulty selector label */
 .difficulty-selector label {
     font-size: 1em;
     margin-right: 10px;
 }
 
+/* Styling for the difficulty selector dropdown */
 .difficulty-selector select {
     padding: 5px;
     font-size: 1em;
 }
 
+/* Container for the game area */
 .game-area {
     display: flex;
     flex-direction: column;
@@ -43,6 +48,7 @@ body.typetutor-body, html.typetutor-body {
     max-width: 800px;
 }
 
+/* Container for the stats container */
 .stats-container {
     display: flex;
     justify-content: space-between;
@@ -51,22 +57,20 @@ body.typetutor-body, html.typetutor-body {
     margin-bottom: 20px;
 }
 
+/* Styling for the game stats */
 .game-stats {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.timer, .accuracy, .errors {
+/* Styling for individual stats */
+.timer, .accuracy, .errors, .cpm, .wpm {
     flex: 1;
     text-align: center;
 }
 
-.cpm, .wpm {
-    flex: 1;
-    text-align: center;
-}
-
+/* Container for the typing area */
 .typing-area {
     display: flex;
     flex-direction: column;
@@ -75,6 +79,7 @@ body.typetutor-body, html.typetutor-body {
     max-width: 800px;
 }
 
+/* Styling for the quote display area */
 .quote-display {
     margin-bottom: 20px;
     font-size: 1.5em;
@@ -90,24 +95,29 @@ body.typetutor-body, html.typetutor-body {
     border-radius: 5px;
 }
 
+/* Styling for individual characters in the quote display */
 .char {
     display: inline-block;
     padding: 2px;
 }
 
+/* Styling for correctly typed characters */
 .correct {
     color: green;
 }
 
+/* Styling for incorrectly typed characters */
 .error {
     color: red;
     text-decoration: underline;
 }
 
+/* Styling for incorrectly typed spaces */
 .space-error {
     background-color: red;
 }
 
+/* Styling for the input area */
 .input_area {
     width: 100%;
     height: 100px;
@@ -121,10 +131,12 @@ body.typetutor-body, html.typetutor-body {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* Styling for disabled input area */
 .input_area:disabled {
     background-color: white;
 }
 
+/* Responsive styling for smaller screens */
 @media (max-width: 600px) {
     .input_area {
         width: 90%;
@@ -132,6 +144,7 @@ body.typetutor-body, html.typetutor-body {
     }
 }
 
+/* Styling for the restart button */
 .restart_button {
     padding: 10px 20px; 
     font-size: 1.2em;
@@ -143,6 +156,7 @@ body.typetutor-body, html.typetutor-body {
     transition: background-color 0.3s;
 }
 
+/* Hover effect for the restart button */
 .restart_button:hover {
     background-color: rgb(228, 136, 22);
 }

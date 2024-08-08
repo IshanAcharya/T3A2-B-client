@@ -1,18 +1,22 @@
+/* Container for the profile form */
 .profile-form {
     display: flex;
     flex-direction: column;
 }
 
+/* Container for form groups */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* Styling for labels within form groups */
 .form-group label {
     display: block;
     margin-bottom: 5px;
     color: #333;
 }
 
+/* Styling for input fields within form groups */
 .form-group input {
     width: 95%;
     padding: 10px;
@@ -21,18 +25,21 @@
     font-size: 16px;
 }
 
+/* Styling for error messages */
 .error {
     color: red;
     font-size: 16px;
     margin-top: 5px;
 }
 
+/* Styling for success messages */
 .success {
     color: green;
     font-size: 14px;
     margin-top: 5px;
 }
 
+/* Styling for the update button */
 .update-button {
     width: 100%;
     padding: 15px;
@@ -46,6 +53,7 @@
     align-self: center;
 }
 
+/* Hover effect for the update button */
 .update-button:hover {
     background-color: #1b6fb8
 }

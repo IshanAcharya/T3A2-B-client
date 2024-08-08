@@ -5,6 +5,7 @@ body, html {
     font-family: 'Arial', sans-serif;
 }
 
+/* Container for the profile page */
 .profile {
     display: flex;
     flex-direction: column;
@@ -15,6 +16,7 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Container for the profile form and profile credentials */
 .profile-container {
     width: 100%;
     max-width: 600px;
@@ -25,6 +27,7 @@ body, html {
     margin-top: 20px;
 }
 
+/* Styling for buttons, including delete and logout buttons */
 .button, .delete-button, .logout-button {
     width: 80%;
     padding: 10px;
@@ -37,34 +40,41 @@ body, html {
     margin-top: 10px;
 }
 
+/* Styling for logout and delete buttons */
 .logout-button, .delete-button {
     width: 48%;
     padding: 10px;
     font-size: 14px;
 }
 
+/* Styling for the delete button */
 .delete-button {
     background-color: red;
     margin-right: 2%;
 }
 
+/* Container for bottom buttons */
 .bottom-buttons {
     display: flex;
     justify-content: space-between;
 }
 
+/* Hover effect for the delete button */
 .delete-button:hover {
     background-color: darkred;
 }
 
+/* Hover effect for the logout button */
 .logout-button:hover {
     background-color: #0056b3;
 }
 
+/* Hover effect for the generic button */
 .button:hover {
     background-color: #0056b3;
 }
 
+/* Container for past sessions, using flexbox for layout */
 .past-sessions-container {
     width: 100%;
     max-width: 800px;
@@ -75,23 +85,27 @@ body, html {
     text-align: center;
 }
 
+/* Styling for the past sessions table */
 .past-sessions-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
+/* Styling for table header and cells */
 .past-sessions-table th, .past-sessions-table td {
     border: 1px solid #2E8FE9;
     padding: 8px;
     text-align: center;
 }
 
+/* Styling for table header */
 .past-sessions-table th {
     background-color: #2E8FE9;
     color: white;
 }
 
+/* Styling for table cells */
 .past-sessions-table td {
     background-color: white;
     color: #333;

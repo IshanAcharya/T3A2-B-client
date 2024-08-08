@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import '../styles/Home.css';
 
+// Define Home component
 const Home = () => {
     return (
         <div className="home">
@@ -19,5 +20,5 @@ const Home = () => {
     );        
 };
 
-
+// Export Home component
 export default Home;

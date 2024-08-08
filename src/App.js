@@ -6,6 +6,7 @@ import Profile from './Pages/Profile';
 import TypeTutor from './Pages/TypeTutor';
 import PrivateRoute from './components/PrivateRoute';
 
+// Define main App component to handle app logic and routes
 const App = () => {
   return (
     <Router>

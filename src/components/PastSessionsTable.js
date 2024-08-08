@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/PastSessionsTable.css';
 
+// Define PastSessionsTable component to display the user's past typing sessions from Type Tutor game
 const PastSessionsTable = ({sessions}) => {
 
     // Function to format date as DD-MM-YY

@@ -5,15 +5,17 @@ body, html {
     font-family: 'Arial', sans-serif;
 }
 
+/* Container for login/register page */
 .login-register {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     background: linear-gradient(to bottom right, white, #2E8FE9);
-    height: 100vh;
+    min-height: 100vh;
 }
 
+/* Form container styling */
 .form-container {
     background: white;
     padding: 30px;
@@ -24,12 +26,14 @@ body, html {
     margin-top: 20px;
 }
 
+/* Toggle button container for switching between login and register */
 .toggle-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
+/* Styling for toggle buttons */
 .toggle-button {
     width: 48%;
     padding: 10px;
@@ -42,16 +46,19 @@ body, html {
     transition: background-color 0.3s ease;
 }
 
+/* Hover effect for toggle buttons */
 .toggle-button:hover {
     background-color: #0056b3;
 }
 
+/* Active button styling for toggle buttons */
 .toggle-button.active {
     background-color: white;
     color: #2E8FE9;
     border: 1px solid #2E8FE9;
 }
 
+/* Styling for form header */
 .form-container h2 {
     margin-bottom: 20px;
     color: #333;
@@ -59,10 +66,12 @@ body, html {
     font-weight: 700;
 }
 
+/* Form group container styling */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* Label styling within form groups */
 .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -70,6 +79,7 @@ body, html {
     font-weight: 400;
 }
 
+/* Input field styling within form groups */
 .form-group input {
     width: 100%;
     padding: 10px;
@@ -78,12 +88,14 @@ body, html {
     font-size: 16px;
 }
 
+/* Error message styling */
 .error {
     color: red;
     font-size: 14px;
     margin-top: 5px;
 }
 
+/* Submit button styling */
 .submit-button {
     width: 100%;
     padding: 10px;
@@ -96,6 +108,7 @@ body, html {
     margin-top: 10px;
 }
 
+/* Hover effect for submit button */
 .submit-button:hover {
     background-color: #0056b3;
 }

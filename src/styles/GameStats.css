@@ -1,3 +1,4 @@
+/* Container for game statistics */
 .game-stats {
     display: flex;
     justify-content: space-between;
@@ -6,12 +7,14 @@
     margin-bottom: 20px;
 }
 
+/* Styling for each paragraph element within the game-stats container */
 .game-stats p {
     margin: 0;
     text-align: center;
     flex: 1;
 }
 
+/* Styling for the values of the game stats */
 .curr_time,
 .curr_accuracy,
 .curr_errors,

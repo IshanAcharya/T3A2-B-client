@@ -1,3 +1,4 @@
+/* Container for the typing area */
 .typing-area {
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     max-width: 800px;
 }
 
+/* Styling for the quote display area */
 .quote-display {
     margin-bottom: 20px;
     font-size: 1.3em;
@@ -14,24 +16,29 @@
     word-wrap: break-word;
 }
 
+/* Styling for individual characters in the quote display */
 .char {
     display: inline-block;
     padding: 2px;
 }
 
+/* Styling for correctly typed characters */
 .correct {
     color: green;
 }
 
+/* Styling for incorrectly typed characters */
 .error {
     color: red;
     text-decoration: underline;
 }
 
+/* Styling for incorrectly typed spaces */
 .space-error {
     background-color: red;
 }
 
+/* Styling for the input area */
 .input_area {
     width: 100%;
     max-width: 600px;
@@ -46,10 +53,12 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* Styling for disabled input area */
 .input_area:disabled {
     background-color: white;
 }
 
+/* Responsive styling for smaller screens */
 @media (max-width: 600px) {
     .input_area {
         width: 90%;

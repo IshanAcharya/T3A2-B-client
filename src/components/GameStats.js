@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/GameStats.css';
 
+// Define GameStats component to display TypeTutor game's current game statistics
 const GameStats = ({ timeLeft, totalErrors, errors, accuracy, cpm, wpm}) => {
     return (
         <div className="game-stats">

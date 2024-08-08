@@ -1,3 +1,4 @@
+/* Container for the past sessions table */
 .past-sessions-table-container {
     width: 100%;
     max-width: 800px;
@@ -8,6 +9,7 @@
     text-align: center;
 }
 
+/* Styling for the past sessions table */
 .past-sessions-table {
     width: 100%;
     margin-top: 20px;
@@ -15,6 +17,7 @@
     border: 1px solid #2E8FE9;
 }
 
+/* Styling for table header and cells */
 .past-sessions-table th,
 .past-sessions-table td {
     padding: 10px;
@@ -22,14 +25,17 @@
     text-align: left;
 }
 
+/* Styling for table header */
 .past-sessions-table th {
     background-color: lightgray;
 }
 
+/* Styling for even table rows */
 .past-sessions-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/* Hover effect for table rows */
 .past-sessions-table tr:hover {
     background-color: #f1f1f1;
 }

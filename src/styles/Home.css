@@ -5,11 +5,12 @@ body, html {
     font-family: 'Arial', sans-serif;
 }
 
+/* Main container for the home page */
 .home {
     text-align: center;
     padding: 20px;
     background: linear-gradient(to bottom right, white, #2E8FE9);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +18,7 @@ body, html {
     overflow: hidden;
 }
 
+/* Styling for the content within the home page */
 .home-content {
     font-size: 16px;
     margin-bottom: 20px;
@@ -28,6 +30,7 @@ body, html {
     font-style: italic;
 }
 
+/* Styling for the buttons within the home page */
 .home-buttons .button {
     display: inline-block;
     margin: 10px;
@@ -42,6 +45,7 @@ body, html {
     font-style: normal;
 }
 
+/* Hover effect for the buttons */
 .home-buttons .button:hover {
     background-color: #0056b3;
 }
