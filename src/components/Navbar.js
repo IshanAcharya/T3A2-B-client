@@ -16,14 +16,12 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="hamburger" onClick={toggleMenu}>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
+                ☰
             </div>
             <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <Link to="/profile" onClick={toggleMenu}>Profile</Link>
-                <Link to="/type-tutor" onClick={toggleMenu}>Type Tutor</Link>
-                <Link to="/" onClick={() => { handleLogout(); toggleMenu(); }}>Logout</Link>
+                <Link to="/profile" onClick={() => setIsOpen(false)}>Profile</Link>
+                <Link to="/type-tutor" onClick={() => setIsOpen(false)}>Type Tutor</Link>
+                <Link to="/" onClick={() => { handleLogout(); setIsOpen(false); }}>Logout</Link>
             </div>
         </nav>
     );

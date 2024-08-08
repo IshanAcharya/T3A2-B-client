@@ -224,7 +224,7 @@ const TypeTutor = () => {
                         <option value="Expert">Expert</option>
                     </select>
                 </div>
-                <div className="stats-container">
+                <div className="game-area">
                     <GameStats
                         timeLeft={timeLeft}
                         totalErrors={totalErrors}
@@ -233,20 +233,20 @@ const TypeTutor = () => {
                         cpm={cpm}
                         wpm={wpm}
                     />
-                </div>
-                <TypingArea
-                    quote={currentQuote}
-                    typedText={typedText}
-                    onTyping={(value) => {
-                        setTypedText(value);
-                        processCurrentText(value);
+                    <TypingArea
+                        quote={currentQuote}
+                        typedText={typedText}
+                        onTyping={(value) => {
+                            setTypedText(value);
+                            processCurrentText(value);
                     }}
                     inputRef={inputAreaRef}
                     errors={errors}
                 />
                 <RestartButton onRestart={resetValues} />
             </div>
-        );
+        </div>
+    );
 };
 
 export default TypeTutor;
