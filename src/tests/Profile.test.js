@@ -19,6 +19,7 @@ jest.mock('../utils/axiosConfig', () => ({
   delete: jest.fn(),
 }));
 
+// Check if Profile component renders correctly 
 describe('Profile Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();

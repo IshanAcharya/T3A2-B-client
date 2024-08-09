@@ -11,6 +11,7 @@ jest.mock('../utils/axiosConfig', () => ({
   post: jest.fn(),
 }));
 
+// Check if LoginRegister component renders correctly
 describe('LoginRegister Component', () => {
   it('renders the login/register component correctly', () => {
     render(
@@ -36,10 +37,10 @@ describe('LoginRegister Component', () => {
     );
 
     // Check if the initial button text is "Login"
-    expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /login/i, className: 'submit-button' })).toBeInTheDocument();
 
     // Switch to register form
-    fireEvent.click(screen.getByRole('button', { name: /switch to register/i }));
+    fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
     // Check if the button text is now "Register"
     expect(screen.getByRole('button', { name: /register/i })).toBeInTheDocument();

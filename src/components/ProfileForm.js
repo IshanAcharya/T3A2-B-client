@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/ProfileForm.css'
 
 // Define ProfileForm component to handle user's profile information update on profile page
